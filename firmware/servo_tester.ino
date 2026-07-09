@@ -3,13 +3,14 @@ const int led1 = 3;     // PB3
 const int led2 = 4;     // PB4
 const int potPin = A1;  // PB2
 
-volatile bool mode = 0;  // ALTERADO NA INTERRUPÇÃO
+// 0 = MANUAL (potenciómetro) | 1 = AUTOMÁTICO (varrimento) | 2 = TRIM/NEUTRO
+volatile uint8_t mode = 0;  // ALTERADO NA INTERRUPÇÃO
 
 // -------------------------
 // INTERRUPÇÃO BOTÃO (PB1)
 // -------------------------
 ISR(PCINT0_vect) {
-  mode = !mode; // toggle simples e rápido
+  mode = (mode + 1) % 3; // avança para o próximo modo
 }
 
 void setup() {
@@ -52,14 +53,14 @@ void loop() {
   // -------------------------
   // MODO AUTOMÁTICO
   // -------------------------
-  else {
+  else if (mode == 1) {
 
     digitalWrite(led1, LOW);
     digitalWrite(led2, HIGH);
 
     // 0°
     for (int i = 0; i < 80; i++) {
-      if (mode == 0) return; // sai imediatamente se mudar modo
+      if (mode != 1) return; // sai imediatamente se mudar modo
 
       digitalWrite(servoPin, HIGH);
       delayMicroseconds(500);
@@ -69,12 +70,27 @@ void loop() {
 
     // 180°
     for (int i = 0; i < 80; i++) {
-      if (mode == 0) return;
+      if (mode != 1) return;
 
       digitalWrite(servoPin, HIGH);
       delayMicroseconds(2400);
       digitalWrite(servoPin, LOW);
       delayMicroseconds(17600);
     }
+  }
+
+  // -------------------------
+  // MODO TRIM / NEUTRO
+  // -------------------------
+  else {
+
+    digitalWrite(led1, HIGH);
+    digitalWrite(led2, HIGH);
+
+    // pulso fixo central (1500us = neutro)
+    digitalWrite(servoPin, HIGH);
+    delayMicroseconds(1500);
+    digitalWrite(servoPin, LOW);
+    delayMicroseconds(18500);
   }
 }

@@ -4,9 +4,10 @@ Open-source hardware servo tester built with an ATtiny85 microcontroller. Design
 
 ## Features
 
-- **2 modes**, toggled with a single push button (interrupt-driven):
+- **3 modes**, cycled with a single push button (interrupt-driven):
   - **Manual** – position controlled live by an onboard potentiometer.
   - **Auto Sweep** – automatically sweeps the servo between 0° and 180°.
+  - **Trim / Neutral** – outputs a fixed center (1500 µs) pulse.
 - **2 status LEDs** indicating the active mode.
 - **Reverse-polarity protection** via a P-channel MOSFET.
 - **470 µF capacitor** for power decoupling/filtering.
@@ -48,6 +49,14 @@ Pin mapping used by the firmware:
 | PB2 | Potentiometer input (A1) |
 | PB3 | Mode LED 1 |
 | PB4 | Mode LED 2 |
+
+LED indication per mode:
+
+| Mode | LED 1 | LED 2 |
+|---|---|---|
+| Manual | On | Off |
+| Auto Sweep | Off | On |
+| Trim / Neutral | On | On |
 
 ## License
 
