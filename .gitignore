@@ -1,0 +1,15 @@
+# Altium Designer - local caches / history (regenerated automatically)
+History/
+__Previews/
+*.Cam
+Project Logs for Servo_Tester/
+Project Outputs for Servo_Tester/
+*.PcbDoc.Bak*
+*.SchDoc.Bak*
+*.PrjPcb.Bak*
+*.DdbBackup
+*.~*
+
+# OS junk
+Thumbs.db
+.DS_Store
