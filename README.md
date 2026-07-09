@@ -40,6 +40,8 @@ Unzip `Project Outputs for Servo_Tester.zip` and upload its contents directly to
 
 Flash `firmware/servo_tester.ino` onto the ATtiny85 through the 6-pin ISP header, using the Arduino IDE with the [ATTinyCore](https://github.com/SpenceKonde/ATTinyCore) board package and a compatible ISP programmer (e.g. USBasp, Arduino as ISP).
 
+> ⚠️ **Note:** the pin order of the ISP header on this board does **not** follow the standard Arduino ISP 2x3 layout. Check the silkscreen labels on the board before wiring up your programmer.
+
 Pin mapping used by the firmware:
 
 | ATtiny85 pin | Function |
