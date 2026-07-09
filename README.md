@@ -23,7 +23,8 @@ Open-source hardware servo tester built with an ATtiny85 microcontroller. Design
 | `Servo_Tester.PrjPcbStructure` | Project structure descriptor |
 | `Servo_Tester.SchDoc` | Schematic |
 | `PCB_Servo_Tester.PcbDoc` | PCB layout |
-| `Servo_Tester.BomDoc` | Bill of materials |
+| `Servo_Tester.BomDoc` | Bill of materials (Altium native format) |
+| `Servo_Tester_BOM.xlsx` | Bill of materials with Digi-Key part numbers, pricing and datasheets |
 | `Project Outputs for Servo_Tester.zip` | Manufacturing outputs (Gerbers, drill files, pick & place, BOM) ready to submit to a fab house such as JLCPCB |
 
 ## Opening the project
@@ -40,4 +41,4 @@ Flash the ATtiny85 through the 6-pin ISP header using a compatible programmer (e
 
 ## License
 
-TBD.
+MIT — see [LICENSE](LICENSE).
